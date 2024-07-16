@@ -1,0 +1,245 @@
+<!-- Code written by James Finn -->
+ <!-- I have minified the CSS to not overcrowd the file -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevent Bullying Campaign</title>
+	<link rel="icon" href="https://media.defense.gov/2014/Oct/31/2000990397/-1/-1/0/141031-F-IV217-001.JPG" type="image/jpg">
+    <style>
+        * {margin: 0;padding: 0;}body {background-color: hsl(0 0% 3.1%);font-family: sans-serif;color: hsl(0 0% 100%);overflow: hidden;}header {position: fixed;top: 0;z-index: 2;max-width: 100%;width: 100%;height: 3.125rem;background-color: hsl(0 0% 3.1%);}.header-layer {height: 100%;padding: 0 24px;display: flex;align-items: center;justify-content: space-between;}.logo {height: 100%;display: flex;align-items: center;justify-content: center;}.image-shadow.for-logo {height: 36px;width: 13px;display: flex;align-items: center;justify-content: center;}.image-shadow img {height: 100%;width: 100%;}.links {display: flex;flex-direction: row;align-items: center;justify-content: center;margin-left: 80px;}.links .links-inner {display: flex;flex-direction: row;align-items: center;list-style: none;list-style-type: none;gap: 20px;}.links .links-inner li {color: #F1F1F1;}.links .links-inner li button {padding: 8px 16px;border: none;outline: none;background: none;color: inherit;font-size: 15px;cursor: pointer;border-radius: 4px;display: flex;flex-direction: row;align-items: center;justify-content: center;gap: 10px;}.links .links-inner li button.active {border-bottom: 2px solid #4285F4;border-radius: 4px 4px 0px 0px;}.links .links-inner li button:hover {background-color: rgba(255, 255, 255, 0.1);}.links .links-inner li a:hover {color: #AAAAAA;}span.small {font-size: 13px;color: hsl(0, 1%, 32%);}main {position: relative;height: 100vh;max-width: 100%;width: 100%;padding: 3.125rem 30px 20px 30px;overflow: hidden;}.slide {width: 100%;min-height: 100%;top: 0;left: 0;padding: 6.25rem 70px 20px 70px;transition: opacity 0.5s ease;box-sizing: border-box;pointer-events: auto;}.slide.active {opacity: 1;}.primary {max-width: 100%;width: 100%;height: 500px;display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;}.primary .message {display: flex;flex-direction: column;align-items: center;justify-content: center;gap: 35px;}.message .namingelementsaresoboring {font-size: 24px;}.icon.white svg {color: #F1F1F1;}.rotating-text {font-family: sans-serif;font-size: 28px;color: #F1F1F1;transform: translateX(-30px);}.rotating-text p {display: inline-flex;margin: 0;vertical-align: top;}.word {position: absolute;display: flex;opacity: 0;}.word .letter {transform-origin: center center 25px;font-size: 28px;}.word .letter.out {transform: rotateX(90deg);transition: 0.32s cubic-bezier(0.6, 0, 0.7, 0.2);}.word .letter.in {transition: 0.38s ease;}.word .letter.behind {transform: rotateX(-90deg);}.red {color: #E74C3C;}.purple {color: #8E44AD;}.blue {color: #4285F4;}.green {color: #2ECC71;}.yellow {color: #F1C40F;}.secondary .message {display: flex;flex-direction: column;gap: 25px;}.message {height: 100%;width: 100%;}.message h1 {font-weight: lighter;font-size: 46px;}.gHeader {display: flex;flex-direction: row;align-items: center;gap: 10px;}.icon {height: 56px;width: 56px;color: #E74C3C;}.icon.mini {height: 20px;width: 20px;color: hsl(0 0% 3.1%);}.message span, .list-item {font-size: 19px;}.message button {width: 150px;height: 40px;border-radius: 9999px;border: none;outline: none;background: hsl(0 0% 100%);vertical-align: middle;display: flex;flex-direction: row;align-items: center;justify-content: center;gap: 10px;font-size: 16px;color: hsl(0, 0%, 0%);cursor: pointer;}.message button:hover {opacity: 0.7;}.list {display: flex;flex-direction: column;padding: 0;list-style: none;list-style-type: none;line-height: 2.5;}.list.space {padding-top: 30px;}.lighter {font-weight: lighter;}.separator {padding: 40px;}.separator .line {height: 1px;background-color: hsl(0 0% 18.82%);width: 100%;}.wrap {display: flex;flex-direction: row;align-items: center;gap: 75px;}.image-wrapper {max-width: 100%;width: 100%;display: flex;flex-direction: row;align-items: center;gap: 35px;padding-top: 30px;}.image-wrapper img {height: 200px;width: 300px;border-radius: 10px;}.subtext {text-align: center;padding: 15px 0 15px 0;}.image-shadow {height: 125px;width: 125px;}.image-shadow img:not(.image-shadow.for-logo img) {height: 100%;width: 100%;border-radius: 5px;}.image-shadow img.wide {height: 150%;width: 200%;}.image-shadow img.extra-wide {height: 150px;width: 150px;}.footer {max-width: 100%;width: 100%;height: 56px;color: #F1F1F1;text-align: center;font-size: 23px;margin-top: 450px;}
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        
+        const buttons = document.querySelectorAll(".header-button");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function() {
+                buttons.forEach(btn => btn.classList.remove("active"));
+                this.classList.add("active");
+
+                const targetId = this.getAttribute("data-target");
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        let words = document.querySelectorAll(".word");
+        words.forEach(word => {
+            let letters = word.textContent.split("");
+            word.textContent = "";
+            letters.forEach(letter => {
+                let span = document.createElement("span");
+                span.textContent = letter;
+                span.classname = "letter";
+                word.append(span);
+            });
+        });
+
+        let currentWordIndex = 0;
+        let maxWordIndex = words.length - 1;
+        words[currentWordIndex].style.opacity = "1";
+
+        let rotateText = () => {
+            let currentWord = words[currentWordIndex];
+            let nextWord = currentWordIndex === maxWordIndex ? words[0] : words[currentWordIndex + 1];
+
+            Array.from(currentWord.children).forEach((letter, i) => {
+                setTimeout(() => {
+                    letter.className = "letter out";
+                }, i * 80);
+            });
+
+            nextWord.style.opacity = "1";
+            Array.from(nextWord.children).forEach((letter, i) => {
+                letter.className = "letter behind";
+                setTimeout(() => {
+                    letter.className = "letter in";
+                }, 340 + i * 80);
+            });
+
+            currentWordIndex = currentWordIndex === maxWordIndex ? 0 : currentWordIndex + 1;
+        };
+
+        rotateText();
+        setInterval(rotateText, 2000);
+
+        document.getElementById("button-one").addEventListener("click", () => {
+            buttons.forEach(btn => btn.classList.remove("active"));
+            btn2.classList.add("active");
+
+            document.getElementById("section2").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    });
+    </script>
+    <header class="header">
+        <div class="header-layer">
+            <div class="logo">
+                <div class="image-shadow for-logo">
+                    <img class="img" alt="" src="https://www.st-petersschool.co.uk/_site/images/design/logo.png">
+                </div>
+            </div>
+            <div class="links">
+                <ul class="links-inner">
+                    <li class="links-item">
+                        <button data-target="section1" class="header-button active">About
+                            <div class="icon mini white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
+                            </div>
+                        </button>
+                    </li>
+                    <li class="links-item">
+                        <button data-target="section2" class="header-button" id="btn2">What is bullying
+                            <div class="icon mini white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>                                  
+                            </div>
+                        </button>
+                    </li>
+                    <li class="links-item">
+                        <button data-target="section3" class="header-button">Effects
+                            <div class="icon mini white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>                                  
+                            </div>
+                        </button>
+                    </li>
+                    <li class="links-item">
+                        <button data-target="section4" class="header-button">Prevent
+                            <div class="icon mini white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>                                  
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="hidden">
+                <span class="small">A website by James Finn</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="primary slide" id="section1">
+            <div class="message">
+                <h1 class="gHeader">Prevent bullying.
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" /></svg>                          
+                    </div>
+                </h1>
+                <span class="namingelementsaresoboring">Bullying affects everyone - those who are bullied, those who bully, and those who witness bullying.</span>
+                <div class="rotating-text">
+                    <p>Bullying is</p>
+                    <p>
+                        <span class="word red">bad.</span>
+                        <span class="word purple">hurtful.</span>
+                        <span class="word blue">disrespectful.</span>
+                        <span class="word green">painful.</span>
+                        <span class="word yellow">unkind.</span>
+                    </p>
+                </div>
+                <div class="additional-text">
+                    <span>I am discussing the topic of bullying because it is important to be aware of the negative consequences it has on people.</span>
+                </div>
+                <button id="button-one">Next
+                    <div class="icon mini">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" /></svg>                          
+                    </div>
+                </button>
+            </div>
+        </section>
+        <section class="secondary slide" id="section2">
+            <div class="message">
+                <h1>What do we mean bullying?</h1>
+                <span>Bullying is any repeated behavior that intentionally hurts someone else. There are many forms of bullying such as</span>
+                <ul class="list">
+                    <li class="list-item">1.&nbsp;&nbsp;Physical Bullying&nbsp;&nbsp;-&nbsp;&nbsp;Physical harm or threats of harm to another person.</li>
+                    <li class="list-item">2.&nbsp;&nbsp;Verbal Bullying&nbsp;&nbsp;-&nbsp;&nbsp;Words used to bully others - teasing, name-calling and insults.</li>
+                    <li class="list-item">3.&nbsp;&nbsp;Cyberbullying&nbsp;&nbsp;-&nbsp;&nbsp;Bullying through the internet.</li>
+                    <li class="list-item">4.&nbsp;&nbsp;Social Bullying&nbsp;&nbsp;-&nbsp;&nbsp;Ruining/harming someone's reputation or relationships.</li>
+                </ul>
+                <div class="image-wrapper">
+                    <div class="img-parent">
+                        <img class="img" alt="" src="https://th.bing.com/th/id/R.45f693df75c3e861f5f705003640ad0c?rik=fWBvbxgveF2ZBg&riu=http%3a%2f%2fkenner.kprdsb.ca%2fcore%2fnodedl%2f86412176%2f123445103%2f86420811%3fxds%3dfileThumbnail%26field%3dfile%26size%3d1024&ehk=50J83dM1ibuEBBxor11feFeUKTOgLw9bx7VTnDMRlb8%3d&risl=&pid=ImgRaw&r=0">
+                        <div class="subtext">Physical Bullying</div>
+                    </div>
+                    <div class="img-parent">
+                        <img class="img" alt="" src="https://www.kapowprimary.com/wp-content/uploads/2020/06/iStock-854198472-2.jpg">
+                        <div class="subtext">Verbal Bullying</div>
+                    </div>
+                    <div class="img-parent">
+                        <img class="img" alt="" src="https://tse3.mm.bing.net/th/id/OIP.hhsEruACKZ2nrlVMJeWsVwHaE7?rs=1&pid=ImgDetMain">
+                        <div class="subtext">Cyberbullying</div>
+                    </div>
+                    <div class="img-parent">
+                        <img class="img" alt="" src="https://www.buscador.com/wp-content/uploads/2020/03/Bullying-social-scaled.jpg">
+                        <div class="subtext">Social Bullying</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="tertiary slide" id="section3">
+            <div class="message">
+                <h2 class="lighter">Bullying can have many negative effects on the victim, such as</h2>
+                <div class="wrap">
+                    <ul class="list space">
+                        <li class="list-item">Anxiety and Depression</li>
+                        <li class="list-item">Low Self-Esteem</li>
+                        <li class="list-item">Isolation</li>
+                        <li class="list-item">The victim can develop sleeping problems and eating disorders</li>
+                        <li class="list-item">In severe cases, it can lead to self-harm</li>
+                    </ul>
+                    <div class="image-shadow">
+                        <img class="img" alt="" src="https://health.mil/-/media/Images/MHS/Infographics/Monthly-Observances/2022-10/OctNationalBullyingPreventionMonthv21080x.ashx">
+                    </div>
+                </div>
+                <div class="separator">
+                    <div class="line"></div>
+                </div>
+                <h2 class="lighter">However, bullies can also receive effects on themselves:</h2>
+                <div class="wrap">
+                    <ul class="list space">
+                        <li class="list-item">Difficulty forming relationships with peers</li>
+                        <li class="list-item">Isolation</li>
+                        <li class="list-item">Academic downgrades</li>
+                        <li class="list-item">Guilt and regret</li>
+                    </ul>
+                    <div class="image-shadow">
+                        <img class="img wide" alt="" src="https://www.verywellfamily.com/thmb/A3euF_zpWBxickACiBKOweZ8jmM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/sb10069280ad-001-56a99af85f9b58b7d0fd44ec.jpg"></img>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="quaternary slide" id="section4">
+            <div class="message">
+                <h1>So... how can we prevent bullying?</h1>
+                <div class="wrap">
+                    <ul class="list space guide">
+                        <li class="list-item">Tell a trusted adult&nbsp;&nbsp;-&nbsp;&nbsp;this could be a parent, teacher or guardian.</li>
+                        <li class="list-item">Don't be a bystander&nbsp;&nbsp;-&nbsp;&nbsp;if you see someone being bullied, go to them and support them.</li>
+                        <li class="list-item">Deal with the bully&nbsp;&nbsp;-&nbsp;&nbsp;strongly ask them to stop, report it or walk away. Don't cause a scene by retaliating.</li>
+                        <li class="list-item">Reach out&nbsp;&nbsp;-&nbsp;&nbsp;Contact NSPCC if you prefer to talk to someone annonymously.</li>
+                        <li class="list-item"></li>
+                    </ul>
+                    <div class="image-shadow">
+                        <img class="img extra-wide" alt="" src="https://www.displayme.com.au/assets/full/SIGN-0039-A3.jpg?20210309031052" height="150" width="250">
+                    </div>
+                </div>
+            </div>
+            <div class="footer">This campaign reflects how God wants us to treat everyone else as we want to be treated ourselves. No one wants to be bullied.</div>
+        </section>
+    </main>
+    <!--       _
+       .__(.)< (MEOW)
+        \___)   
+ ~~~~~~~~~~~~~~~~~~-->
+</body>
+</html>
